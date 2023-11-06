@@ -20,11 +20,28 @@ const Addnote = (props) => {
     setNote({...note, [e.target.name]: e.target.value});
   }
 
+  const textAreaStyle = {
+    height :'200px'
+  }
+
   return (
     <div>
       <h1>Add a new Note</h1>
       <div className="container my-3">
         <form>
+          <div className="mb-3">
+            <label htmlFor="tag" className="form-label">
+              Tag
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="tag"
+              name="tag"
+              value={note.tag}
+              onChange={onChange}
+            />
+          </div>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
@@ -40,7 +57,7 @@ const Addnote = (props) => {
               minLength={5}
             />
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Description
             </label>
@@ -54,20 +71,29 @@ const Addnote = (props) => {
               minLength={5}
               required
             />
-          </div>
+          </div> */}
+
           <div className="mb-3">
-            <label htmlFor="tag" className="form-label">
-              Tag
+            <label htmlFor="description" className="form-label">
+              Description
             </label>
-            <input
+            <textarea
               type="text"
               className="form-control"
-              id="tag"
-              name="tag"
-              value={note.tag}
+              id="description"
+              name="description"
+              value={note.description}
               onChange={onChange}
-            />
+              minLength={5}
+              required
+              style={textAreaStyle}
+            ></textarea>
           </div>
+
+          {/* <div className="form-floating mb-3">
+            <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Comments</label>
+          </div> */}
           <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleclick}>
             Add Note
           </button>

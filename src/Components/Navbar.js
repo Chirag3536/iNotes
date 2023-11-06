@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = (props) => {
   let location = useLocation();
   const navigate = useNavigate();
 
@@ -12,7 +13,8 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark"
+      data-bs-theme={`${props.mode}`}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           iNotes
@@ -41,6 +43,25 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
+          {/* <div
+            className={`form-check form-switch text-${
+              props.mode !== "light" ? "dark" : "light"
+            }`}
+          >
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.toggleMode}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >
+              Dark Mode
+            </label>
+          </div> */}
           {!(localStorage.getItem('token')) ? <form className="d-flex"><Link to="/login" type="button" className="btn btn-outline-primary mx-1">Login</Link>
           <Link to="/signup" type="button" className="btn btn-outline-primary mx-1">Signup</Link></form> : <button onClick = {handleLogout} className="btn btn-outline-primary mx-1">Logout</button>}
         </div>

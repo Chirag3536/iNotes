@@ -8,7 +8,7 @@ const NoteState = (props) => {
 
   // Get all Notes
   const getNotes = async () => {
-    // API call to delete a note
+    // API call to add a note
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
@@ -85,9 +85,26 @@ const NoteState = (props) => {
     setNotes(newNotes);
   };
 
+  // Get a Note by ID
+  const getNoteById = async (id) => {
+    // API call to fetch a single note by ID
+    const response = await fetch(`${host}/api/notes/fetchnote/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const note = await response.json();
+    // You can set this single note in the state or use it as needed.
+    console.log(note);
+    return note;
+  };
+  
+
   return (
     <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, editNote, getNotes }}
+      value={{ notes, addNote, deleteNote, editNote, getNotes, getNoteById }}
     >
       {props.children}
     </NoteContext.Provider>

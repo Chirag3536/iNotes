@@ -8,7 +8,7 @@ const Notes = (props) => {
   let navigate = useNavigate();
   const {showAlert} = props;
   const context = useContext(noteContext);
-  const { notes, getNotes, editNote } = context;
+  const { notes, getNotes, editNote , getNoteById} = context;
   const[note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""})
   const ref = useRef(null);
   const refClose = useRef(null);
@@ -135,6 +135,7 @@ const Notes = (props) => {
           </div>
         </div>
       </div>
+
       <div className="row my-3">
         <h2>Your notes</h2>
         <div className="container mx-2">
@@ -142,7 +143,7 @@ const Notes = (props) => {
         </div>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} updateNote={updateNote} note={note} showAlert = {showAlert}/>
+            <NoteItem key={note._id} updateNote={updateNote} getNoteById = {getNoteById} note={note} showAlert = {showAlert}/>
           );
         })}
       </div>

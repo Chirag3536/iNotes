@@ -5,7 +5,9 @@ import Alert from "./Components/Alert";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import Signup from "./Components/Signup";
+import ViewModal from "./Components/ViewModal";
 import NoteState from "./Context/notes/NoteState";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -35,10 +37,12 @@ function App() {
               <Route exact path="/" element={<Home showAlert = {showAlert} /> } />
               <Route exact path="/about" element={<About/>} />
               <Route exact path="/login" element={<Login showAlert = {showAlert} />} />
-              <Route exact path="/signup" element={<Signup  showAlert = {showAlert}/>} />
+              <Route exact path="/signup" element={<Signup  showAlert = {showAlert} />} />
             </Routes>
           </div>
         </Router>
+        <ViewModal/>
+        <Footer/>
       </NoteState>
     </>
   );
