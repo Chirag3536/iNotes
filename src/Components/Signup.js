@@ -45,7 +45,7 @@ const Signup = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3" >
+        <div className="mb-3 textWt" >
           <label htmlFor="name" className="form-label">
             Name
           </label>
@@ -58,7 +58,7 @@ const Signup = (props) => {
             onChange={onChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 textWt">
           <label htmlFor="email" className="form-label">
             Email address
           </label>
@@ -72,7 +72,7 @@ const Signup = (props) => {
             onChange={onChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 textWt">
           <label htmlFor="password" className="form-label">
             Password
           </label>
@@ -86,7 +86,7 @@ const Signup = (props) => {
             onChange={onChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 textWt">
           <label htmlFor="cpassword" className="form-label">
             Confirm Password
           </label>
@@ -101,7 +101,7 @@ const Signup = (props) => {
           />
         </div>
         
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-success ">
           Submit
         </button>
       </form>

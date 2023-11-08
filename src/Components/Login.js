@@ -37,7 +37,7 @@ const Login = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-3 textWt">
           <label
             htmlFor="email"
             className="form-label"
@@ -53,11 +53,11 @@ const Login = (props) => {
             value={credentials.email}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
+          {/* <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
-          </div>
+          </div> */}
         </div>
-        <div className="mb-3">
+        <div className="mb-3 textWt">
           <label
             htmlFor="password"
             className="form-label"
@@ -73,7 +73,7 @@ const Login = (props) => {
             value={credentials.password}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-outline-success btn-group-lg">
           Login
         </button>
       </form>

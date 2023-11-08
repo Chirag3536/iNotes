@@ -25,9 +25,9 @@ const Addnote = (props) => {
   }
 
   return (
-    <div>
+    <div >
       <h1>Add a new Note</h1>
-      <div className="container my-3">
+      <div className="container my-3 textWt">
         <form>
           <div className="mb-3">
             <label htmlFor="tag" className="form-label">
@@ -57,21 +57,6 @@ const Addnote = (props) => {
               minLength={5}
             />
           </div>
-          {/* <div className="mb-3">
-            <label htmlFor="description" className="form-label">
-              Description
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              name="description"
-              value={note.description}
-              onChange={onChange}
-              minLength={5}
-              required
-            />
-          </div> */}
 
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
@@ -94,7 +79,7 @@ const Addnote = (props) => {
             <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
             <label for="floatingTextarea">Comments</label>
           </div> */}
-          <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleclick}>
+          <button disabled={note.title.length<5 || note.description.length<5 || note.tag.length <5} type="submit" className="btn btn-outline-success" onClick={handleclick}>
             Add Note
           </button>
         </form>

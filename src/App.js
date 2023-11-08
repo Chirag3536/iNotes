@@ -7,7 +7,6 @@ import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Signup from "./Components/Signup";
-import ViewModal from "./Components/ViewModal";
 import NoteState from "./Context/notes/NoteState";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -41,7 +40,6 @@ function App() {
             </Routes>
           </div>
         </Router>
-        <ViewModal/>
         <Footer/>
       </NoteState>
     </>

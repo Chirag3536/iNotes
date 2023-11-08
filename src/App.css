@@ -37,3 +37,26 @@
   }
 } */
 
+.card-height {
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 18rem;
+  border-width: 2px;
+}
+
+.card-header{
+  font-weight: 500;
+  font-size: large;
+}
+
+.btn{
+  border-width: 2px;
+}
+
+.modal{
+  border-width: 20px;
+}
+
+.textWt{
+  font-weight: 500;
+}

@@ -11,6 +11,7 @@ const Notes = (props) => {
   const { notes, getNotes, editNote , getNoteById} = context;
   const[note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""})
   const ref = useRef(null);
+  const viewRef = useRef(null);
   const refClose = useRef(null);
   
   const handleclick = (e)=>{
@@ -40,6 +41,22 @@ const Notes = (props) => {
     setNote({id : currentNote._id, etitle : currentNote.title, edescription : currentNote.description, etag : currentNote.tag});
   };
 
+  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
+
+  const handleViewNote = (currentNote) => {
+    viewRef.current.click();
+    getNoteById(currentNote._id)
+      .then((data) => {
+        setDescription(data.description);
+        setTitle(data.title);
+        // console.log(data.description);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <>
       <Addnote showAlert = {showAlert}/>
@@ -62,7 +79,7 @@ const Notes = (props) => {
         aria-hidden="true"
       >
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content ">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit Note
@@ -77,7 +94,7 @@ const Notes = (props) => {
             <div className="modal-body">
               <div className="container my-3">
                 <form>
-                  <div className="mb-3">
+                  <div className="mb-3 textWt">
                     <label htmlFor="title" className="form-label">
                       Title
                     </label>
@@ -90,7 +107,7 @@ const Notes = (props) => {
                       value={note.etitle}
                     />
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-3 textWt">
                     <label htmlFor="description" className="form-label">
                       Description
                     </label>
@@ -103,7 +120,7 @@ const Notes = (props) => {
                       value={note.edescription}
                     />
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-3 textWt">
                     <label htmlFor="tag" className="form-label">
                       Tag
                     </label>
@@ -122,15 +139,37 @@ const Notes = (props) => {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-outline-success"
                 data-bs-dismiss="modal"
                 ref={refClose}
               >
                 Close
               </button>
-              <button disabled = {note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-primary" onClick={handleclick}>
+              <button disabled = {note.etitle.length<5 || note.edescription.length<5} type="button" className="btn btn-outline-success" onClick={handleclick}>
                 Update Note
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* For viewing the specific note */}
+      <button type="button" ref={viewRef} class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        Launch demo modal
+      </button>
+
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{title}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              {description}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -143,7 +182,7 @@ const Notes = (props) => {
         </div>
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} updateNote={updateNote} getNoteById = {getNoteById} note={note} showAlert = {showAlert}/>
+            <NoteItem key={note._id} updateNote={updateNote} getNoteById = {getNoteById} note={note} showAlert = {showAlert} handleViewNote={handleViewNote}/>
           );
         })}
       </div>

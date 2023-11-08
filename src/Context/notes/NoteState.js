@@ -97,7 +97,7 @@ const NoteState = (props) => {
     });
     const note = await response.json();
     // You can set this single note in the state or use it as needed.
-    console.log(note);
+    // console.log(note);
     return note;
   };
   

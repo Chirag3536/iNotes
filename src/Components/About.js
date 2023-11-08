@@ -10,7 +10,7 @@ const About = () => {
       </div>
 
       <div className="container fs-3 mt-5">
-        Connect with us
+        Connect with us:
         <a href='https://www.linkedin.com/in/chirag-kumar-14b348200' target='/'><i className="fa-brands fa-linkedin mx-3" ></i></a>
         <a href='mailto:chiragkumar3536@gmail.com' target='/'><i className="fa-solid fa-envelope mx-3" ></i></a>
       </div>
