@@ -57,6 +57,10 @@ const Notes = (props) => {
       });
   };
 
+  const textAreaStyle = {
+    height :'200px'
+  }
+
   return (
     <>
       <Addnote showAlert = {showAlert}/>
@@ -72,13 +76,13 @@ const Notes = (props) => {
       </button>
       {/* <!-- Modal --> */}
       <div
-        className="modal fade"
+        className="modal fade modal-lg"
         id="exampleModal"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog ">
           <div className="modal-content ">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
@@ -111,14 +115,15 @@ const Notes = (props) => {
                     <label htmlFor="description" className="form-label">
                       Description
                     </label>
-                    <input
+                    <textarea
                       type="text"
                       className="form-control"
                       id="edescription"
                       name="edescription"
                       onChange={onChange}
                       value={note.edescription}
-                    />
+                      style={textAreaStyle}
+                    ></textarea>
                   </div>
                   <div className="mb-3 textWt">
                     <label htmlFor="tag" className="form-label">
@@ -154,22 +159,22 @@ const Notes = (props) => {
       </div>
 
       {/* For viewing the specific note */}
-      <button type="button" ref={viewRef} class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+      <button type="button" ref={viewRef} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal2">
         Launch demo modal
       </button>
 
-      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">{title}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div className="modal fade modal-lg" id="exampleModal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">{title}</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               {description}
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -191,3 +196,5 @@ const Notes = (props) => {
 };
 
 export default Notes;
+
+

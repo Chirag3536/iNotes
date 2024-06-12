@@ -66,7 +66,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, description }),
+      body: JSON.stringify({ title, description}),
     });
     const json = await response.json();
     console.log(json)

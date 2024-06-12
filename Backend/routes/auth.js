@@ -103,7 +103,7 @@ router.post(
   }
 );
 
-// ROUTE 3: Get logged in usedetails using Post: "/api/auth/getuser" Login required
+// ROUTE 3: Get logged in userdetails using Post: "/api/auth/getuser" Login required
 router.post("/getuser", fetchuser,  async (req, res) => {
   try {
     const userId = req.user.id;

@@ -1,8 +1,7 @@
-import React from 'react'
-// import noteContext from '../Context/notes/noteContext'
-
+import React  from 'react'
 
 const About = () => {
+
   return (
     <div>
       <div className="container fs-3">
